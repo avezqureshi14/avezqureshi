@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avez Qureshi</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body onload="preload()">
+    <div class="loading" id="aqloads">
+        <div class="loader">
+            <div class="prelogo"></div>
+            <h1>A</h1>
+        </div>
+        <h4>Developed by Avez Qureshi</h4>
+    </div>
+    <div class="home-container">
+
+        <div class="homeContent_scroll">
+            <a href="#about" class="scroll-link smoothscroll">
+                <span>Scroll down</span>
+            </a>
+        </div>
+        <div class="homeContent_line"></div>
+
+        <div id="toggle" class="menu">
+            <h4>MENU</h4>
+        </div>
+
+        <script>
+            window.addEventListener("scroll", function () {
+                var header = document.querySelector(".menu");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
+        </script>
+
+
+
+        <div id="home" class="logo">
+            <img src="avez-logo.png" alt="avez-logo" srcset="">
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#work">Projects</a></li>
+                <li><a href="#contact">Contact us</a></li>
+            </ul>
+
+            <section class="sidebar-section" title="About me">
+                <p>
+                    I'm a passionate <span class="high-light" style="color: #555;">C++ Programmer and Web Developer
+                    </span> I like solving
+                    Problems using Computer Science, building the Front-End and Back-End of Websites and Web
+                    Applications using <span class="high-light" style="color: #555;">React JS and Django</span> and along with
+                    this I am also a <span class="high-light" style="color: #555;">Newbie Open Source Contirbutor</span>
+                </p>
+            </section>
+        </div>
+
+        <script>
+            const toggle = document.getElementById('toggle');
+            const sidebar = document.getElementById('sidebar');
+
+            document.onclick = function (e) {
+                if (e.target.id !== 'sidebar' && e.target.id !== 'toggle') {
+                    toggle.classList.remove('active');
+                    sidebar.classList.remove('active')
+                }
+            }
+
+            toggle.onclick = function () {
+                toggle.classList.toggle('active');
+                sidebar.classList.toggle('active')
+            }
+        </script>
+
+        <script>
+            window.addEventListener("scroll", function () {
+                var menu = document.querySelector("menu");
+                MENU.classList.toggle("menu", window.scrollY > 0);
+            })
+        </script>
+
+
+
+        <div class="home-content">
+            <div class="home-social">
+
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"><span class="soc-span">Facebook</span></a></li>
+                    <li><a href="#" class="fa fa-instagram"><span class="soc-span">Instagram</span></a></li>
+                    <li><a href="#" class="fa fa-linkedin"><span class="soc-span">Linkedin</span></a></li>
+                    <li><a href="#" class="fa fa-github"><span class="soc-span">Github</span></a></li>
+                    <li><a href="#" class="fa fa-twitter"><span class="soc-span">Twitter</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-home-content">
+            <h2 data-aos="fade-up">HEY, I'M AVEZ QURESHI</h2>
+            <h1 data-aos="fade-up">A Focused Programmer, Web Developer <br> and a Freelancer
+                <div class="buttons1" data-aos="fade-up">
+                    <a href="#work"> <button class="btn" id="btn1" style="cursor: pointer;">VIEW PROJECTS</button></a>
+                    <a href="#about"><button class="btn" id="btn2" style="cursor: pointer;">MORE ABOUT ME</button></a>
+                </div>
+        </div>
+    </div>
+
+
+    <section>
+
+        <div class="primary-about-control">
+            <div class="about_line"></div>
+
+            <div id="about" class="about-container" data-aos="fade">
+
+                <h2>About ME</h2>
+                <span class="p1">Here you might know something more about me, my current skills mostly
+                    in terms
+                    of
+                    programming and technology</span>
+                <div class="secondary-about-control">
+
+
+                    <div class="content_details" data-aos="fade-up">
+                        <h3>Get to know me!</h3>
+
+                        <p class="p2">
+                            I'm a passionate <span class="high-light">C++ Programmer and Web Developer </span> I like
+                            solving Problems using Computer Science, building the Front-End and Back-End of Websites and
+                            Web Applications using <span class="high-light">React JS and Django</span> and along with this I am
+                            also a <span class="high-light">Newbie Open Source Contirbutor</span>
+
+                        </p>
+                    </div>
+
+                    <div class="content-skills" data-aos="fade-up">
+                        <h3 class="title-content-skills">My Skills</h3>
+
+                        <div class="skills">
+                            <div class="skill_skill">C++</div>
+                            <div class="skill_skill">HTML</div>
+                            <div class="skill_skill">CSS</div>
+                            <div class="skill_skill">JavaScript</div>
+                            <div class="skill_skill">React JS</div>
+                            <div class="skill_skill">Python</div>
+                            <div class="skill_skill">Django</div>
+                            <div class="skill_skill">Bootstrap</div>
+                            <div class="skill_skill">Git</div>
+                            <div class="skill_skill">Github</div>
+                            <div class="skill_skill">Heroku</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+
+    <section id="work" class="sWorks">
+        <div class="workContainer" data-aos="fade">
+            <h2>RECENT PROJECTS</h2>
+            <span class="p1">These are my Latest Recent Projects</span>
+        </div>
+
+        <div class="projectSection" data-aos="fade-up">
+
+            <div class="project">
+                <img src="Picture7.png" alt="" srcset="">
+                <div class="bg">
+                    <div class="caption" title="E-Commerce Store">
+                        <h1>E-Commerce Store Website</h1>
+                        <p
+                            style="color: #fff; text-align: center;  margin-top: 10px; margin-bottom: 10px; letter-spacing: 1px;">
+                            This is a Fully Functional E-Commerce Website which includes CRUD Operation ,Django as its Backend and many more...  </p>
+                            <strong>Status: Deploying on Heroku... </strong> <br>
+                            <b style="color: #fff;" >Website will be active in <br> <span id="demo" ></span></b> <br><br>
+                            <a href="#" target="__blank" style="display: block;" > <span
+                                    class="material-icons">
+                                    insert_link
+                                </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="project">
+                <img src="Picture110.png" alt="" srcset="">
+                <div class="bg">
+                    <div class="caption" title="Covid-19 Web">
+                        <h1>Covid-19 Awareness</h1>
+                        <p
+                            style="color: #fff; text-align: center;  margin-top: 10px; margin-bottom: 10px; letter-spacing: 1px;">
+                            This Site is a Covid-19 Awareness Website which shows about Precautions, Prevention, Do's and Don't during Covid-19  </p>
+                        <a href="https://avezqureshi14.github.io/covidawareness/" target="__blank"> <span
+                                class="material-icons">
+                                insert_link
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <img src="Picture1.png" alt="" srcset="">
+                <div class="bg">
+                    <div class="caption" title="Mini Projects Web">
+                        <h1>Mini Projects Web</h1>
+                        <p
+                            style="color: #fff; text-align: center;  margin-top: 10px; margin-bottom: 10px; letter-spacing: 1px;">
+                            This Site contains 100's of CSS and JavaScript Components whose each and every line of Code
+                            is written by me.</p>
+                        <a href="https://miniproweb.herokuapp.com/" target="__blank"> <span
+                                class="material-icons">
+                                insert_link
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="project">
+                <img src="Picture4.png" alt="" srcset="">
+                <div class="bg">
+                    <div class="caption" title="Restaurant Template">
+                        <h1>Restaurant Template</h1>
+                        <p
+                            style="color: #fff; text-align: center;  margin-top: 10px; margin-bottom: 10px; letter-spacing: 1px;">
+                            This is an E-commerce Website Template for Small Restaurant Bussinesses, who are trying to bring their bussiness online  </p>
+                        <a href="https://avezqureshi14.github.io/crown/index.html" target="__blank" style="display: block;" > <span
+                                class="material-icons">
+                                insert_link
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+      
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <section id="contact" class="contact">
+        <div class="contact_line"></div>
+        <div class="overlay"></div>
+        <div class="content" data-aos="fade">
+            <h2>Contact Us</h2>
+            <p>Feel free to contact me</p>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <!--container-->
+            <div class="contactInfo">
+                <!--contactInfo-->
+                <!-- #1 -->
+                <div class="box">
+                    <!--box-1-->
+                    <div class="icon fa fa-home"></div>
+                    <div class="text">
+                        <!--text-1-->
+                        <h3>Address</h3>
+                        <p>
+                            Sinhgad Institute
+                            Kondhwa Pune, Maharashtra 411048
+                            India.</p>
+                    </div>
+                    <!--text-1-->
+                </div>
+                <!--box-1-->
+                <!-- #2 -->
+                <div class="box">
+                    <!--box-2-->
+                    <div class="icon fa fa-phone"></div>
+                    <div class="text">
+                        <!--text-2-->
+                        <h3>Phone</h3>
+                        <p>+91 8623089814</p>
+                    </div>
+                    <!--text-2-->
+                </div>
+                <!--box-2-->
+                <!-- #3 -->
+                <div class="box">
+                    <!--box-3-->
+                    <div class="icon fa fa-envelope "> </div>
+                    <div class="text">
+                        <!--text-3-->
+                        <h3>Email</h3>
+                        <p>aveznqureshi14@gmail.com</p>
+                    </div>
+                    <!--text-3-->
+                </div>
+                <!--box-3-->
+
+            </div>
+            <!--contactInfo-->
+
+            <div class="contactForm">
+                <!--contactForm-->
+                <form action="https://formspree.io/f/mjvlvobj" method="POST" autocomplete="off">
+                    <h2>Send Message</h2>
+                    <div class="inputBox">
+                        <!--inputBox1-->
+                        <input type="text" name="" required="required">
+                        <span>Full Name</span>
+                    </div>
+                    <!--inputBox1-->
+
+                    <div class="inputBox">
+                        <!--inputBox2-->
+                        <input type="text" name="_replyto" required="required">
+                        <span>Email</span>
+                    </div>
+                    <!--inputBox2-->
+
+                    <div class="inputBox">
+                        <!--inputBox3-->
+                        <textarea name="message" required="required"></textarea>
+                        <span>Type your Message...</span>
+                    </div>
+                    <!--inputBox3-->
+
+                    <div class="inputBox">
+                        <!--inputBox4-->
+                        <input type="submit" value="send">
+                    </div>
+                    <!--inputBox4-->
+                </form>
+            </div>
+            <!--contactForm-->
+        </div>
+        <!--container-->
+
+    </section>
+
+
+
+
+
+
+    <footer>
+        <div class="f-container">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p style="color: #fff;"> I'm a passionate <span class="high-light" style="color: #555;">C++ Programmer
+                        and Web Developer </span> I like solving
+                    Problems using Computer Science, building the Front-End and Back-End of Websites and Web
+                    Applications using <span class="high-light" style="color: #555;">React JS and Django</span> and along with
+                    this I am also a <span class="high-light" style="color: #555;">Newbie Open Source Contirbutor</span>
+                </p>
+                <ul class="sci">
+                    <li><a href="https://www.linkedin.com/in/avez-qureshi-7a0918203/" class="fa fa-linkedin"
+                            title="Avez on Linkedin"></a></li>
+                    <li><a href="https://github.com/avezqureshi14" class="fa fa-github" title="Avez on Github"></a></li>
+                    <li><a href="#" class="fa fa-twitter" title="Avez on Twitter"></a></li>
+                </ul>
+            </div>
+
+
+            <div class="sec quicklinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#work">Projects</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="sec footcontact">
+                <div class="counters" title="Lines of Code">
+
+                    <h2>Lines of Code</h2>
+                    <div class="counter">10000</div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </footer>
+    <div>
+        <div class="copyrightText">
+            <p> &copy; 2022 Avez Qureshi. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 100,
+                time: 10000
+            });
+        });
+
+    </script>
+
+    <script>
+        var form = document.getElementById("my-form");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("my-form-status");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                status.innerHTML = "Thanks for your submission!";
+                form.reset()
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+            });
+        }
+        form.addEventListener("submit", handleSubmit)
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init(
+            {
+                offset: 300, // offset (in px) from the original trigger point
+                duration: 10000, // values from 0 to 3000, with step 50ms
+            }
+        );
+    </script>
+    <script>
+        var pre = document.getElementById("aqloads");
+        var bar = document.getElementById("toggle");
+        function preload() {
+            pre.style.display = "none";
+            bar.style.display = "flex";
+        }
+    </script>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 5, 2024 10:00:00").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+          document.getElementById("demo").innerHTML = hours + "h "
+          + minutes + "m " + seconds + "s ";
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+        </script>
+        
+</body>
+
+</html>
+</body>
+
+</html>
