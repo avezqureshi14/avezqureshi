@@ -24,6 +24,7 @@
     width: 100%;
     z-index: 9999;
     opacity: 1;
+    color: #fff;
     transform: opacity 1s linear;
     
 }
