@@ -44,17 +44,21 @@ export function TimelineTour({ target, open, onSkip }: TimelineTourProps) {
       return;
     }
 
-    function update() {
-      if (target) setHole(measure(target));
+    let raf = 0;
+    let last = "";
+
+    function loop() {
+      const next = measure(target);
+      const key = `${next.top}|${next.left}|${next.width}|${next.height}`;
+      if (key !== last) {
+        last = key;
+        setHole(next);
+      }
+      raf = requestAnimationFrame(loop);
     }
 
-    update();
-    window.addEventListener("resize", update);
-    window.addEventListener("scroll", update, true);
-    return () => {
-      window.removeEventListener("resize", update);
-      window.removeEventListener("scroll", update, true);
-    };
+    loop();
+    return () => cancelAnimationFrame(raf);
   }, [open, target]);
 
   useEffect(() => {

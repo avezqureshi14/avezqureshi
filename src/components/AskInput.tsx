@@ -1,11 +1,12 @@
-import { useState, type FormEvent, type KeyboardEvent } from "react";
+import { useState, type FormEvent, type KeyboardEvent, type Ref } from "react";
 
 type AskInputProps = {
   disabled?: boolean;
   onSend: (value: string) => void;
+  inputRef?: Ref<HTMLInputElement>;
 };
 
-export function AskInput({ disabled, onSend }: AskInputProps) {
+export function AskInput({ disabled, onSend, inputRef }: AskInputProps) {
   const [value, setValue] = useState("");
 
   function submit() {
@@ -30,6 +31,7 @@ export function AskInput({ disabled, onSend }: AskInputProps) {
   return (
     <form onSubmit={onSubmit} className="composer-bar relative">
       <input
+        ref={inputRef}
         type="text"
         value={value}
         disabled={disabled}

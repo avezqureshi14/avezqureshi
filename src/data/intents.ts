@@ -6,6 +6,9 @@ export type IntentId =
   | "rakuten"
   | "talentos"
   | "pipeline"
+  | "architecture"
+  | "improved"
+  | "whygo"
   | "stack"
   | "contact";
 
@@ -17,21 +20,21 @@ export type Intent = {
   followUps: IntentId[];
 };
 
-export const defaultChips: IntentId[] = ["work", "experience", "talentos"];
+export const defaultChips: IntentId[] = ["who", "work", "experience"];
+
+export const timelineAsk: Partial<Record<IntentId, string>> = {
+  omron: "What did you build at Omron?",
+  rakuten: "What did you build at Rakuten?",
+  talentos: "What did you build at TalentOS?",
+};
 
 export const intents: Intent[] = [
   {
     id: "rakuten",
-    aliases: [
-      "rakuten",
-      "sixthsense",
-      "sixth sense",
-      "observability",
-      "rum",
-    ],
-    prompt: "Rakuten",
+    aliases: ["rakuten", "sixthsense", "sixth sense", "observability", "rum"],
+    prompt: "Tell me about SixthSense",
     timeline: "rakuten",
-    followUps: ["pipeline", "stack", "omron"],
+    followUps: ["architecture", "talentos", "omron"],
   },
   {
     id: "talentos",
@@ -44,35 +47,61 @@ export const intents: Intent[] = [
       "langgraph",
       "copilot",
     ],
-    prompt: "TalentOS",
+    prompt: "Tell me about TalentOS",
     timeline: "talentos",
-    followUps: ["stack", "experience", "contact"],
+    followUps: ["stack", "who", "contact"],
   },
   {
     id: "omron",
     aliases: ["omron", "factory", "healthcare", "uptime"],
-    prompt: "Omron",
+    prompt: "Tell me about Omron",
     timeline: "omron",
-    followUps: ["rakuten", "stack", "experience"],
+    followUps: ["rakuten", "talentos", "stack"],
+  },
+  {
+    id: "architecture",
+    aliases: ["architecture", "how does it work", "pipeline diagram"],
+    prompt: "Show me the architecture",
+    timeline: "rakuten",
+    followUps: ["stack", "talentos", "omron"],
   },
   {
     id: "pipeline",
     aliases: [
       "pipeline",
-      "ingestion",
+      "why kafka",
       "kafka",
-      "golang",
-      " go ",
+      "ingestion",
       "clickhouse",
       "keda",
     ],
-    prompt: "The Go pipeline",
+    prompt: "Why Kafka?",
     timeline: "rakuten",
-    followUps: ["rakuten", "stack", "work"],
+    followUps: ["architecture", "rakuten", "stack"],
+  },
+  {
+    id: "whygo",
+    aliases: ["why go", "golang", "why golang"],
+    prompt: "Why Go?",
+    timeline: "rakuten",
+    followUps: ["architecture", "stack", "rakuten"],
+  },
+  {
+    id: "improved",
+    aliases: ["improve", "improved", "what did you improve", "result"],
+    prompt: "What did you improve?",
+    timeline: "omron",
+    followUps: ["omron", "rakuten", "work"],
   },
   {
     id: "work",
-    aliases: ["recent work", "what do you build", "projects", "selected work"],
+    aliases: [
+      "recent work",
+      "my work",
+      "what do you build",
+      "projects",
+      "selected work",
+    ],
     prompt: "Recent work",
     timeline: null,
     followUps: ["rakuten", "talentos", "omron"],
@@ -86,10 +115,10 @@ export const intents: Intent[] = [
   },
   {
     id: "stack",
-    aliases: ["stack", "tech", "languages", "tools"],
-    prompt: "Tech stack",
+    aliases: ["stack", "tech", "languages", "tools", "engineering"],
+    prompt: "My engineering",
     timeline: null,
-    followUps: ["pipeline", "talentos", "contact"],
+    followUps: ["rakuten", "talentos", "omron"],
   },
   {
     id: "who",
@@ -98,12 +127,13 @@ export const intents: Intent[] = [
       "who is avez",
       "about",
       "yourself",
+      "my story",
       "know more",
       "about me",
     ],
-    prompt: "Know more About me",
+    prompt: "Who are you?",
     timeline: null,
-    followUps: ["experience", "work", "contact"],
+    followUps: ["work", "experience", "contact"],
   },
   {
     id: "contact",

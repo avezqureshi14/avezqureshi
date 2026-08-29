@@ -94,41 +94,45 @@ body {
   box-shadow: none;
 }
 
-.chat-scroll {
+* {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
+}
+
+.sleek-scroll {
   scrollbar-gutter: stable;
 }
 
-.chat-scroll.is-scrolling,
-.chat-scroll:hover {
+*:hover,
+.is-scrolling {
   scrollbar-color: color-mix(in srgb, var(--ink) 26%, transparent) transparent;
 }
 
-.chat-scroll::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 3px;
+  height: 3px;
 }
 
-.chat-scroll::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
   margin-block: 8px;
 }
 
-.chat-scroll::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 999px;
 }
 
-.chat-scroll.is-scrolling::-webkit-scrollbar-thumb,
-.chat-scroll:hover::-webkit-scrollbar-thumb {
+*:hover::-webkit-scrollbar-thumb,
+.is-scrolling::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
-.chat-scroll::-webkit-scrollbar-thumb:active {
+*::-webkit-scrollbar-thumb:active {
   background: color-mix(in srgb, var(--ink) 40%, transparent);
 }
 
-.chat-scroll::-webkit-scrollbar-corner {
+*::-webkit-scrollbar-corner {
   background: transparent;
 }
 

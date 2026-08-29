@@ -6,14 +6,16 @@ export type TimelineItem = {
   title: string;
   kind: TimelineKind;
   dates: string;
+  blurb: string;
+  stack: string;
 };
 
 export const profile = {
   fullName: "Mohammad Avez Qureshi",
   mark: "Avez Qureshi",
-  intro: "Hi! I am Avez.",
-  role: "Software engineer, Webknot. Bengaluru.",
-  knowMore: "Know more About me",
+  intro: "Hi, I'm Avez.",
+  role: "Software engineer building systems, interfaces, and occasionally overthinking them.",
+  askMe: "Ask me anything",
   resume: "/resume.html",
   links: [
     { label: "Resume", href: "/resume.html" },
@@ -29,6 +31,8 @@ export const profile = {
       title: "Omron Healthcare",
       kind: "client",
       dates: "Aug 2024 – Apr 2025",
+      blurb: "Factory monitoring",
+      stack: "Kafka · Docker · Grafana",
     },
     {
       id: "rakuten",
@@ -36,6 +40,8 @@ export const profile = {
       title: "Rakuten India",
       kind: "client",
       dates: "May 2025 – July 2026",
+      blurb: "SixthSense observability",
+      stack: "Go · Kafka · React · Kubernetes",
     },
     {
       id: "talentos",
@@ -43,6 +49,8 @@ export const profile = {
       title: "TalentOS",
       kind: "internal",
       dates: "July 2026 – Present",
+      blurb: "AI hiring platform",
+      stack: "React · FastAPI · LangGraph",
     },
   ] satisfies TimelineItem[],
 } as const;

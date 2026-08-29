@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { IntentId } from "../data/intents";
 import { linkify } from "../lib/linkify";
+import { useScrollbarReveal } from "../lib/useScrollbarReveal";
 import type { ChatMessage } from "../types";
 import { Chip } from "./Chip";
 
@@ -11,29 +12,18 @@ type ChatThreadProps = {
 
 export function ChatThread({ messages, onChip }: ChatThreadProps) {
   const endRef = useRef<HTMLDivElement>(null);
-  const hideTimer = useRef<number>(0);
-  const [scrolling, setScrolling] = useState(false);
+  const { scrolling, onScroll } = useScrollbarReveal();
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages]);
-
-  useEffect(() => {
-    return () => window.clearTimeout(hideTimer.current);
-  }, []);
-
-  function onScroll() {
-    setScrolling(true);
-    window.clearTimeout(hideTimer.current);
-    hideTimer.current = window.setTimeout(() => setScrolling(false), 700);
-  }
 
   const lastAvez = [...messages].reverse().find((item) => item.role === "avez");
 
   return (
     <div
       onScroll={onScroll}
-      className={`chat-scroll flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto pr-2 ${
+      className={`sleek-scroll flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto pr-2 ${
         scrolling ? "is-scrolling" : ""
       }`}
     >
@@ -77,6 +67,11 @@ export function ChatThread({ messages, onChip }: ChatThreadProps) {
                   <Chip key={chip} id={chip} onSelect={onChip} />
                 ))}
               </div>
+            ) : null}
+            {showChips && message.id === "welcome" ? (
+              <p className="mt-4 text-[13px] tracking-[-0.01em] text-ink-faint">
+                or ask me anything ↓
+              </p>
             ) : null}
           </article>
         );

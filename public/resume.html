@@ -10,6 +10,34 @@
       rel="stylesheet"
     />
     <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+      }
+      *:hover {
+        scrollbar-color: rgba(13, 13, 13, 0.22) transparent;
+      }
+      *::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+      }
+      *::-webkit-scrollbar-track {
+        background: transparent;
+        margin-block: 8px;
+      }
+      *::-webkit-scrollbar-thumb {
+        background: transparent;
+        border-radius: 999px;
+      }
+      *:hover::-webkit-scrollbar-thumb {
+        background: rgba(13, 13, 13, 0.22);
+      }
+      *::-webkit-scrollbar-thumb:active {
+        background: rgba(13, 13, 13, 0.4);
+      }
+      *::-webkit-scrollbar-corner {
+        background: transparent;
+      }
       body {
         margin: 0;
         padding: 48px 56px;

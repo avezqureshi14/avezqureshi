@@ -5,16 +5,21 @@ import { ChatThread } from "./components/ChatThread";
 import { IntroColumn } from "./components/IntroColumn";
 import { TimelineTour } from "./components/TimelineTour";
 import { TopMark } from "./components/TopMark";
-import { defaultChips, type Intent, type IntentId } from "./data/intents";
+import {
+  defaultChips,
+  timelineAsk,
+  type Intent,
+  type IntentId,
+} from "./data/intents";
 import { fallbackReply, replies } from "./data/replies";
 import { matchById, matchIntent } from "./lib/matchIntent";
 import { applyTheme, type Theme } from "./lib/theme";
 import { stamp } from "./lib/time";
 import { hasSeenTour, markTourSeen } from "./lib/tour";
+import { useScrollbarReveal } from "./lib/useScrollbarReveal";
 import type { ChatMessage } from "./types";
 
-const welcome =
-  "What do you want to know? A year on the left, or a question here.";
+const welcome = "What do you want to know?";
 
 function welcomeMessage(): ChatMessage {
   return {
@@ -52,6 +57,8 @@ export default function App() {
   });
   const generation = useRef(0);
   const timelineRef = useRef<HTMLOListElement>(null);
+  const askRef = useRef<HTMLInputElement>(null);
+  const leftScroll = useScrollbarReveal();
   const [tourOpen, setTourOpen] = useState(false);
   const [tourTarget, setTourTarget] = useState<HTMLElement | null>(null);
 
@@ -85,7 +92,7 @@ export default function App() {
       finishTour();
     }
     const intent = matchById(id);
-    void speak(intent, intent.prompt);
+    void speak(intent, timelineAsk[id] ?? intent.prompt);
   }
 
   async function speak(intent: Intent | null, youText: string) {
@@ -156,10 +163,16 @@ export default function App() {
           <TopMark theme={theme} onToggleTheme={toggleTheme} />
         </div>
         <div className="mt-8 grid min-h-0 flex-1 grid-cols-1 gap-8 overflow-hidden lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.55fr)] lg:gap-20">
-          <div className="min-h-0 overflow-y-auto lg:overflow-hidden">
+          <div
+            className={`sleek-scroll min-h-0 overflow-y-auto ${
+              leftScroll.scrolling ? "is-scrolling" : ""
+            }`}
+            onScroll={leftScroll.onScroll}
+          >
             <IntroColumn
               active={active}
               onSelect={sendIntent}
+              onAskMe={() => askRef.current?.focus()}
               timelineRef={timelineRef}
               tourActive={tourOpen}
             />
@@ -167,7 +180,7 @@ export default function App() {
           <section className="flex min-h-0 flex-col">
             <ChatThread messages={messages} onChip={sendIntent} />
             <div className="mt-6 shrink-0">
-              <AskInput disabled={busy} onSend={sendText} />
+              <AskInput disabled={busy} onSend={sendText} inputRef={askRef} />
             </div>
           </section>
         </div>

@@ -8,8 +8,12 @@ export function matchIntent(input: string): Intent | null {
   const query = ` ${normalize(input)} `;
   if (!query.trim()) return null;
 
-  if (query.trim() === "go" || query.includes(" golang") || query.includes(" why go")) {
-    return intents.find((item) => item.id === "pipeline") ?? null;
+  if (
+    query.trim() === "go" ||
+    query.includes(" golang") ||
+    query.includes(" why go")
+  ) {
+    return intents.find((item) => item.id === "whygo") ?? null;
   }
 
   for (const intent of intents) {
