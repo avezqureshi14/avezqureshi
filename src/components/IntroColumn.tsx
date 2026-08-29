@@ -27,21 +27,21 @@ export function IntroColumn({
   }, []);
 
   return (
-    <aside className="flex h-full min-h-0 flex-col justify-between">
+    <aside className="flex min-h-0 flex-col lg:h-full lg:justify-between">
       <div>
-        <h1 className="text-[28px] font-medium leading-[1.15] tracking-[-0.03em] text-ink md:text-[36px]">
+        <h1 className="text-[26px] font-medium leading-[1.15] tracking-[-0.03em] text-ink md:text-[36px]">
           {part}
         </h1>
-        <p className="mt-6 max-w-[22rem] text-[16px] leading-[1.65] tracking-[-0.011em] text-ink-muted">
+        <p className="mt-4 max-w-[22rem] text-[15px] leading-[1.6] tracking-[-0.011em] text-ink-muted md:mt-6 md:text-[16px] md:leading-[1.65]">
           {profile.intro}
         </p>
-        <p className="mt-4 max-w-[22rem] text-[16px] leading-[1.65] tracking-[-0.011em] text-ink-muted">
+        <p className="mt-3 max-w-[22rem] text-[15px] leading-[1.6] tracking-[-0.011em] text-ink-muted md:mt-4 md:text-[16px] md:leading-[1.65]">
           {profile.role}
         </p>
         <button
           type="button"
           onClick={onAskMe}
-          className="mt-5 text-left text-[15px] font-medium tracking-[-0.011em] text-ink transition-colors duration-150 hover:text-ink-muted"
+          className="mt-4 min-h-10 text-left text-[15px] font-medium tracking-[-0.011em] text-ink transition-colors duration-150 hover:text-ink-muted md:mt-5"
         >
           {profile.askMe}
           <span className="ml-1.5 text-ink-muted">→</span>
@@ -53,7 +53,7 @@ export function IntroColumn({
           elevated={tourActive}
         />
       </div>
-      <nav className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-muted">
+      <nav className="mt-8 flex flex-wrap gap-x-5 gap-y-2 pb-1 text-[13px] text-ink-muted lg:mt-10">
         {profile.links.map((link) => (
           <a
             key={link.href}

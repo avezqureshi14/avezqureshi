@@ -1,4 +1,4 @@
-import { useState, type Ref } from "react";
+import { useEffect, useState, type Ref } from "react";
 import { profile, type TimelineItem } from "../data/profile";
 import type { IntentId } from "../data/intents";
 
@@ -17,16 +17,25 @@ export function Timeline({
 }: TimelineProps) {
   const items = profile.timeline;
   const [hovered, setHovered] = useState<TimelineItem["id"] | null>(null);
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setCanHover(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
 
   return (
     <ol
       ref={listRef}
-      className={`mt-10 ${elevated ? "relative z-50" : ""}`}
+      className={`mt-7 lg:mt-10 ${elevated ? "relative z-50" : ""}`}
       onMouseLeave={() => setHovered(null)}
     >
       {items.map((item, index) => {
         const isActive = active === item.id;
-        const isOpen = hovered ? hovered === item.id : isActive;
+        const isOpen = canHover && hovered ? hovered === item.id : isActive;
         const isLast = index === items.length - 1;
 
         return (
@@ -35,7 +44,7 @@ export function Timeline({
               type="button"
               onClick={() => onSelect(item.id)}
               onMouseEnter={() => setHovered(item.id)}
-              className={`grid w-full grid-cols-[3.25rem_12px_1fr] items-start gap-3 text-left transition-colors duration-150 ${
+              className={`grid w-full min-h-11 grid-cols-[3.25rem_12px_1fr] items-start gap-3 text-left transition-colors duration-150 lg:min-h-0 ${
                 isLast ? "pb-0" : "pb-6"
               } ${isOpen ? "text-ink" : "text-ink-muted hover:text-ink"}`}
             >

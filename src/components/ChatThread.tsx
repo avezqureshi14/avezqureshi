@@ -23,7 +23,7 @@ export function ChatThread({ messages, onChip }: ChatThreadProps) {
   return (
     <div
       onScroll={onScroll}
-      className={`sleek-scroll flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto pr-2 ${
+      className={`sleek-scroll flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto pr-1 lg:gap-8 lg:pr-2 ${
         scrolling ? "is-scrolling" : ""
       }`}
     >
@@ -37,7 +37,7 @@ export function ChatThread({ messages, onChip }: ChatThreadProps) {
         return (
           <article
             key={message.id}
-            className="animate-in max-w-[40rem]"
+            className="animate-in max-w-[40rem] break-words"
           >
             <p className="mb-2 text-[11px] tracking-[0.02em] text-ink-faint">
               {message.role === "you" ? "You" : "Avez"}
@@ -45,8 +45,8 @@ export function ChatThread({ messages, onChip }: ChatThreadProps) {
             <p
               className={
                 message.role === "you"
-                  ? "whitespace-pre-wrap text-[16px] font-medium leading-[1.65] tracking-[-0.011em] text-ink"
-                  : "whitespace-pre-wrap text-[16px] leading-[1.65] tracking-[-0.011em] text-ink"
+                  ? "whitespace-pre-wrap text-[15px] font-medium leading-[1.6] tracking-[-0.011em] text-ink lg:text-[16px] lg:leading-[1.65]"
+                  : "whitespace-pre-wrap text-[15px] leading-[1.6] tracking-[-0.011em] text-ink lg:text-[16px] lg:leading-[1.65]"
               }
             >
               {message.role === "avez"

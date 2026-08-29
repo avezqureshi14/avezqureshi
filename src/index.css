@@ -48,8 +48,16 @@
 html,
 body,
 #root {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  html,
+  body,
+  #root {
+    height: 100vh;
+  }
 }
 
 body {
@@ -60,6 +68,7 @@ body {
   caret-color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: color-mix(in srgb, var(--ink) 10%, transparent);
+  touch-action: manipulation;
 }
 
 ::selection,

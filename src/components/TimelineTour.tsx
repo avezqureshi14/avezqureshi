@@ -100,10 +100,16 @@ export function TimelineTour({ target, open, onSkip }: TimelineTourProps) {
 
   if (!open || !hole) return null;
 
-  const tipOnRight = hole.left + hole.width + 300 < window.innerWidth;
-  const tipStyle = tipOnRight
-    ? { top: hole.top + 8, left: Math.min(hole.left + hole.width + 20, window.innerWidth - 300) }
-    : { top: hole.top + hole.height + 16, left: hole.left };
+  const tipWidth = Math.min(260, window.innerWidth - 32);
+  const tipOnRight = hole.left + hole.width + tipWidth + 24 < window.innerWidth;
+  let top = tipOnRight ? hole.top + 8 : hole.top + hole.height + 12;
+  let left = tipOnRight
+    ? Math.min(hole.left + hole.width + 20, window.innerWidth - tipWidth - 16)
+    : Math.max(16, Math.min(hole.left, window.innerWidth - tipWidth - 16));
+  if (top + 168 > window.innerHeight - 12) {
+    top = Math.max(16, hole.top - 168);
+  }
+  const tipStyle = { top, left, width: tipWidth };
 
   return (
     <div className="pointer-events-none fixed inset-0 z-40">

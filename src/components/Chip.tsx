@@ -10,7 +10,7 @@ export function Chip({ id, onSelect }: ChipProps) {
     <button
       type="button"
       onClick={() => onSelect(id)}
-      className="rounded-full bg-chip px-3.5 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-chip-fg transition-colors duration-150 hover:bg-line"
+      className="min-h-9 rounded-full bg-chip px-3.5 py-2 text-[13px] font-medium tracking-[-0.01em] text-chip-fg transition-colors duration-150 hover:bg-line lg:min-h-0 lg:py-1.5"
     >
       {getIntent(id).prompt}
     </button>

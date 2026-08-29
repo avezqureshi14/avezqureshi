@@ -157,14 +157,14 @@ export default function App() {
   }
 
   return (
-    <div className="h-[100vh] overflow-hidden bg-paper text-ink">
-      <div className="mx-auto flex h-full max-w-[1180px] flex-col px-6 py-6 md:px-14 md:py-8">
+    <div className="h-full overflow-hidden bg-paper text-ink">
+      <div className="mx-auto flex h-full max-w-[1180px] flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-14 md:py-8">
         <div className="shrink-0">
           <TopMark theme={theme} onToggleTheme={toggleTheme} />
         </div>
-        <div className="mt-8 grid min-h-0 flex-1 grid-cols-1 gap-8 overflow-hidden lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.55fr)] lg:gap-20">
+        <div className="mt-5 flex min-h-0 flex-1 flex-col gap-5 overflow-hidden lg:mt-8 lg:grid lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.55fr)] lg:gap-20">
           <div
-            className={`sleek-scroll min-h-0 overflow-y-auto ${
+            className={`sleek-scroll max-h-[42dvh] min-h-0 shrink-0 overflow-y-auto lg:max-h-none lg:overflow-y-auto ${
               leftScroll.scrolling ? "is-scrolling" : ""
             }`}
             onScroll={leftScroll.onScroll}
@@ -177,9 +177,9 @@ export default function App() {
               tourActive={tourOpen}
             />
           </div>
-          <section className="flex min-h-0 flex-col">
+          <section className="flex min-h-0 flex-1 flex-col">
             <ChatThread messages={messages} onChip={sendIntent} />
-            <div className="mt-6 shrink-0">
+            <div className="mt-4 shrink-0 lg:mt-6">
               <AskInput disabled={busy} onSend={sendText} inputRef={askRef} />
             </div>
           </section>
