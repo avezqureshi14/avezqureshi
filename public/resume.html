@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>Mohammad Avez Qureshi — Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -10,6 +13,11 @@
       rel="stylesheet"
     />
     <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
       * {
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
@@ -38,6 +46,9 @@
       *::-webkit-scrollbar-corner {
         background: transparent;
       }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
       body {
         margin: 0;
         padding: 48px 56px;
@@ -46,6 +57,7 @@
         background: #fff;
         line-height: 1.5;
         max-width: 820px;
+        overflow-wrap: anywhere;
       }
       h1 {
         font-size: 28px;
@@ -72,8 +84,16 @@
       .row {
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
         gap: 16px;
         font-size: 13px;
+      }
+      .row h3 {
+        margin: 14px 0 2px;
+      }
+      .row span {
+        flex-shrink: 0;
+        white-space: nowrap;
       }
       .muted {
         color: #5d5d5d;
@@ -110,6 +130,39 @@
       .download:hover {
         background: #2a2a2a;
       }
+      @media (max-width: 720px) {
+        body {
+          padding: max(1.25rem, env(safe-area-inset-top))
+            max(1rem, env(safe-area-inset-right))
+            max(1.5rem, env(safe-area-inset-bottom))
+            max(1rem, env(safe-area-inset-left));
+        }
+        h1 {
+          font-size: 22px;
+          line-height: 1.25;
+        }
+        .meta {
+          font-size: 12px;
+          line-height: 1.75;
+          margin-bottom: 20px;
+        }
+        .row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2px;
+        }
+        .row span {
+          white-space: normal;
+        }
+        .toolbar {
+          margin-bottom: 20px;
+        }
+        .download {
+          width: 100%;
+          justify-content: center;
+          min-height: 44px;
+        }
+      }
       @media print {
         .toolbar {
           display: none;
@@ -132,6 +185,7 @@
       Bangalore, India ·
       <a href="mailto:avezqureshi4785@gmail.com">avezqureshi4785@gmail.com</a> ·
       +91-9890562214 ·
+      <a href="https://avezqureshi.vercel.app/">Portfolio</a> ·
       <a href="https://www.linkedin.com/in/avezqureshi14/">LinkedIn</a> ·
       <a href="https://github.com/avezqureshi14">GitHub</a> ·
       <a href="https://leetcode.com/avezqureshi14/">LeetCode</a>
@@ -139,7 +193,7 @@
 
     <h2>Summary</h2>
     <p>
-      Full-stack Software Engineer with 2+ years at Webknot, currently building TalentOS,
+      Senior Software Engineer with 2+ years at Webknot, currently building TalentOS,
       an internal AI hiring platform (FastAPI, LangGraph). Previously on Rakuten's SixthSense
       observability platform processing 50K–100K events per second — Go ingestion, Kafka
       pipelines, and frontend architecture used by a 7-engineer team. Earlier redesigned Omron
@@ -148,7 +202,7 @@
 
     <h2>Experience</h2>
     <div class="row">
-      <h3>Webknot Technologies · <span class="muted">Software Engineer I</span></h3>
+      <h3>Webknot Technologies · <span class="muted">Senior Software Engineer</span></h3>
       <span class="muted">May 2024 – Present · Bangalore</span>
     </div>
 

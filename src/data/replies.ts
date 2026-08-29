@@ -17,7 +17,7 @@ Pune University, B.E. IT, 2024. 8.34/10.`,
 
 Ask about any of them.`,
 
-  experience: `Webknot Technologies. Software Engineer I. May 2024–present. Bangalore.
+  experience: `Webknot Technologies. Senior Software Engineer. May 2024–present. Bangalore.
 
 2024 — Omron Healthcare India, client.
 2025 — Rakuten India, SixthSense, client.

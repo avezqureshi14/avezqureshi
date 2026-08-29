@@ -27,7 +27,7 @@ export function IntroColumn({
   }, []);
 
   return (
-    <aside className="flex min-h-0 flex-col lg:h-full lg:justify-between">
+    <aside className="flex h-full min-h-0 flex-col justify-between">
       <div>
         <h1 className="text-[26px] font-medium leading-[1.15] tracking-[-0.03em] text-ink md:text-[36px]">
           {part}

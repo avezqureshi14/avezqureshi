@@ -61,6 +61,7 @@ export default function App() {
   const leftScroll = useScrollbarReveal();
   const [tourOpen, setTourOpen] = useState(false);
   const [tourTarget, setTourTarget] = useState<HTMLElement | null>(null);
+  const [mobilePane, setMobilePane] = useState<"intro" | "chat">("intro");
 
   useEffect(() => {
     if (hasSeenTour()) return;
@@ -82,7 +83,12 @@ export default function App() {
     applyTheme(next);
   }
 
+  function openMobileChat() {
+    setMobilePane("chat");
+  }
+
   function sendText(value: string) {
+    openMobileChat();
     const intent = matchIntent(value);
     void speak(intent, value);
   }
@@ -91,6 +97,7 @@ export default function App() {
     if (tourOpen && (id === "omron" || id === "rakuten" || id === "talentos")) {
       finishTour();
     }
+    openMobileChat();
     const intent = matchById(id);
     void speak(intent, timelineAsk[id] ?? intent.prompt);
   }
@@ -160,24 +167,36 @@ export default function App() {
     <div className="h-full overflow-hidden bg-paper text-ink">
       <div className="mx-auto flex h-full max-w-[1180px] flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-14 md:py-8">
         <div className="shrink-0">
-          <TopMark theme={theme} onToggleTheme={toggleTheme} />
+          <TopMark
+            theme={theme}
+            onToggleTheme={toggleTheme}
+            showBack={mobilePane === "chat"}
+            onBack={() => setMobilePane("intro")}
+          />
         </div>
-        <div className="mt-5 flex min-h-0 flex-1 flex-col gap-5 overflow-hidden lg:mt-8 lg:grid lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.55fr)] lg:gap-20">
+        <div className="mt-5 flex min-h-0 flex-1 flex-col overflow-hidden lg:mt-8 lg:grid lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.55fr)] lg:gap-20">
           <div
-            className={`sleek-scroll max-h-[42dvh] min-h-0 shrink-0 overflow-y-auto lg:max-h-none lg:overflow-y-auto ${
-              leftScroll.scrolling ? "is-scrolling" : ""
-            }`}
+            className={`sleek-scroll min-h-0 overflow-y-auto ${
+              mobilePane === "chat" ? "max-lg:hidden" : "h-full flex-1"
+            } ${leftScroll.scrolling ? "is-scrolling" : ""}`}
             onScroll={leftScroll.onScroll}
           >
             <IntroColumn
               active={active}
               onSelect={sendIntent}
-              onAskMe={() => askRef.current?.focus()}
+              onAskMe={() => {
+                openMobileChat();
+                window.setTimeout(() => askRef.current?.focus(), 50);
+              }}
               timelineRef={timelineRef}
-              tourActive={tourOpen}
+              tourActive={tourOpen && mobilePane === "intro"}
             />
           </div>
-          <section className="flex min-h-0 flex-1 flex-col">
+          <section
+            className={`min-h-0 flex-1 flex-col ${
+              mobilePane === "intro" ? "hidden lg:flex" : "flex"
+            }`}
+          >
             <ChatThread messages={messages} onChip={sendIntent} />
             <div className="mt-4 shrink-0 lg:mt-6">
               <AskInput disabled={busy} onSend={sendText} inputRef={askRef} />
@@ -186,7 +205,7 @@ export default function App() {
         </div>
       </div>
       <TimelineTour
-        open={tourOpen}
+        open={tourOpen && mobilePane === "intro"}
         target={tourTarget}
         onSkip={finishTour}
       />
