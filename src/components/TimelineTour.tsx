@@ -44,11 +44,12 @@ export function TimelineTour({ target, open, onSkip }: TimelineTourProps) {
       return;
     }
 
+    const el = target;
     let raf = 0;
     let last = "";
 
     function loop() {
-      const next = measure(target);
+      const next = measure(el);
       const key = `${next.top}|${next.left}|${next.width}|${next.height}`;
       if (key !== last) {
         last = key;
