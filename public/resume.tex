@@ -1,0 +1,114 @@
+\documentclass[10pt]{article}
+
+\usepackage{geometry}
+\geometry{top=0.35in, bottom=0.4in, left=0.65in, right=0.65in}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=black}
+
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin=1.15em,
+  labelsep=0.4em,
+  itemsep=2.5pt,
+  parsep=0pt,
+  topsep=3pt,
+  partopsep=0pt
+}
+
+\pagestyle{empty}
+
+\newcommand{\sectiontitle}[1]{%
+  \par\vspace{8pt}%
+  \noindent\textbf{\large #1}\par
+  \vspace{-2pt}\noindent\hrulefill\par
+  \vspace{4pt}%
+}
+
+\newcommand{\role}[3]{%
+  \noindent\textbf{#1} \hfill #3\par
+  \textit{#2}\par
+  \vspace{3pt}%
+}
+
+\newcommand{\client}[2]{%
+  \par\vspace{8pt}%
+  \noindent\textbf{Client --- #1} \hfill #2\par
+  \vspace{3pt}%
+}
+
+\newcommand{\product}[2]{%
+  \par\vspace{8pt}%
+  \noindent\textbf{Internal product --- #1} \hfill #2\par
+  \vspace{3pt}%
+}
+
+\begin{document}
+
+% ========== HEADER ==========
+\vspace*{-8pt}
+{\centering
+  {\LARGE\textbf{Mohammad Avez Qureshi}}\par
+  \vspace{3pt}
+  {\small Bangalore, India \textbar\
+  \href{mailto:avezqureshi4785@gmail.com}{avezqureshi4785@gmail.com} \textbar\
+  +91-9890562214 \textbar\
+  \href{https://www.linkedin.com/in/avezqureshi14/}{LinkedIn} \textbar\
+  \href{https://github.com/avezqureshi14}{GitHub} \textbar\
+  \href{https://leetcode.com/avezqureshi14/}{LeetCode}}\par
+}
+
+% ========== SUMMARY ==========
+\sectiontitle{Summary}
+
+Full-stack Software Engineer with \textbf{2+ years} at Webknot, currently building TalentOS, an internal AI hiring platform (FastAPI, LangGraph). Previously on Rakuten's SixthSense observability platform processing \textbf{50K--100K events per second} --- Go ingestion, Kafka pipelines, and frontend architecture used by a 7-engineer team. Earlier redesigned Omron factory-monitoring pipelines. TypeScript, Go, Python, React, Kafka, PostgreSQL.
+
+% ========== EXPERIENCE ==========
+\sectiontitle{Experience}
+
+\role{Webknot Technologies}{Software Engineer I}{May 2024 -- Present | Bangalore, India}
+
+\client{Omron Healthcare India}{Aug 2024 -- Apr 2025}
+\begin{itemize}
+  \item Redesigned data architecture for a B2B factory monitoring system: Kafka offload of heavy jobs, isolating core services from slow vendor APIs to keep the platform available \textbf{24/7}.
+  \item Added strict timeouts and exponential backoff on external APIs so cascading production failures stopped under peak load; fail-safe Kafka paths so telemetry is not dropped during traffic spikes.
+  \item Containerized and operated services with Docker; added Winston logging and Grafana dashboards for production monitoring.
+\end{itemize}
+
+\client{Rakuten India (SixthSense Observability)}{May 2025 -- July 2026}
+\begin{itemize}
+  \item Built a stateless Go ingestion pipeline for real-time browser telemetry, pushing events into Kafka and processing \textbf{50K--100K events per second} at peak.
+  \item Built REST APIs for platform infrastructure, internal tracking tools, and client dashboards; Kafka consumer groups with retries and a dead-letter queue so ingest stays up when downstream slows.
+  \item Removed ClickHouse write-throughput as the peak bottleneck via bulk inserts, asynchronous processing, and lag-based consumer autoscaling (KEDA / HPA).
+  \item Owned frontend architecture used by a \textbf{7-engineer team} --- shared component library, theming engine, plugin system, and charting factory.
+  \item Built a strongly-typed charting factory over ApexCharts, \textbf{reducing code duplication by $\sim$70\%}, and a type-safe theme layer with Tailwind, Ant Design Tokens, and CVA with runtime overrides.
+\end{itemize}
+
+\product{TalentOS}{July 2026 -- Present}
+\begin{itemize}
+  \item Built a multi-tenant AI hiring platform (React, FastAPI, PostgreSQL): Kafka workers parse resumes and LangGraph agents score them against the JD, with an audit trail on every auto-reject.
+  \item Shipped a recruiter copilot --- LangGraph supervisor plus 27 MCP tools that call the API as the logged-in user, scoped by RBAC.
+\end{itemize}
+
+% ========== SKILLS ==========
+\sectiontitle{Skills}
+
+{\setlength{\parskip}{2.5pt}
+\noindent\textbf{Languages:} TypeScript, JavaScript, Go, Python, SQL\par
+\noindent\textbf{Frontend:} React, Tailwind CSS, Ant Design, ApexCharts\par
+\noindent\textbf{Backend:} REST APIs, FastAPI, NestJS, Kafka, LangGraph, Microservices\par
+\noindent\textbf{Data:} PostgreSQL, MySQL, SQL Server, ClickHouse, Redis\par
+\noindent\textbf{Infra:} Docker, Kubernetes, KEDA, AWS, Grafana, Prometheus, CI/CD, GitHub Actions\par
+\noindent\textbf{Practices:} Unit / Integration / API testing, Agile, GitHub Copilot, OpenAI Codex\par
+}
+
+% ========== EDUCATION ==========
+\sectiontitle{Education \& Achievements}
+
+\begin{itemize}
+  \item \textbf{Pune University} --- B.E. in Information Technology (May 2024) | CGPA: \textbf{8.34/10}
+  \item \textbf{Spot Award (Rakuten India --- 2025)} --- High-impact contributions to the SixthSense observability platform.
+  \item \textbf{Spot Award (Webknot Technologies --- 2024)} --- Recognized for feature delivery and product ownership on Taxlab.
+\end{itemize}
+
+\end{document}
